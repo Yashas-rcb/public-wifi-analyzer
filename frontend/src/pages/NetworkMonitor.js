@@ -31,7 +31,6 @@ export default function NetworkMonitor() {
     frequency: '5 GHz',
     devices: generateDevices(),
   });
-  const [tick, setTick] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -41,7 +40,6 @@ export default function NetworkMonitor() {
         upload: Math.max(1, prev.upload + randomBetween(-5, 5)),
         latency: Math.max(1, prev.latency + randomBetween(-5, 5)),
       }));
-      setTick((t) => t + 1);
     }, 2000);
     return () => clearInterval(interval);
   }, []);
