@@ -1,3 +1,4 @@
+
 name: Deploy Public WiFi Analyzer
 
 on:
@@ -34,7 +35,9 @@ jobs:
 
       - name: Build React application
         working-directory: frontend
-        run: CI=false npm run build
+        run: node ./node_modules/react-scripts/bin/react-scripts.js build
+        env:
+          CI: "false"
 
       - name: Upload build files
         uses: actions/upload-pages-artifact@v3
